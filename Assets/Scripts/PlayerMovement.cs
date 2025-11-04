@@ -12,12 +12,16 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Q))
         {
-            rigidbodyPlayer.AddForce(-sidewaysForce, 0.0f, 0.0f);
+            rigidbodyPlayer.AddForce(-sidewaysForce, 0.0f, 0.0f, ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbodyPlayer.AddForce(sidewaysForce, 0.0f, 0.0f);
+            rigidbodyPlayer.AddForce(sidewaysForce, 0.0f, 0.0f, ForceMode.VelocityChange);
         }
-        
+
+        if (rigidbodyPlayer.position.y < 0)
+        {
+            FindFirstObjectByType<GameManager>().EndGame();
+        }
     }
 }

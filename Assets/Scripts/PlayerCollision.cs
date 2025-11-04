@@ -10,6 +10,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("On a touché " + collisionInfo.collider.name);
             playerMovement.enabled = false;
+            FindFirstObjectByType<GameManager>().EndGame();
         }
     }
 }
